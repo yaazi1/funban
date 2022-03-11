@@ -1,7 +1,7 @@
 {
-  "name": "fs-app-template",
+  "name": "funban",
   "version": "2.0.0",
-  "description": "Some boilerplate code to get you started - get shakin'!",
+  "description": " A simple Kanban project board to aid in productivity and agile development.",
   "main": "index.js",
   "scripts": {
     "build": "webpack",
