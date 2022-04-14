@@ -1,6 +1,6 @@
 'use strict'
 
-const {db, models: {User} } = require('../server/db')
+const { db, models: { User, Task } } = require('../server/db')
 
 /**
  * seed - this function clears the database, updates tables to
@@ -16,13 +16,31 @@ async function seed() {
     User.create({ username: 'murphy', password: '123' }),
   ])
 
+  // Creating Tasks 
+  const tasks = await Promise.all([
+    Task.create({ userId: 2, title: "Finish Stackathon", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", status: "in progress" }),
+    Task.create({ userId: 2, title: "Become a Pilot", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." }),
+    Task.create({ userId: 2, title: "Become a Developer", description: "finish stackathon, captone, and graduate", status: "in progress" }),
+    Task.create({ userId: 2, title: "Become a firefigher", description: "Not possible but sure", status: "todo" }),
+    Task.create({ userId: 2, title: "Example of Finished Task", description: "Not possible but sure", status: "completed" }),
+
+    Task.create({ userId: 1, title: "Finish Stackathon Cody", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.", status: "in progress" }),
+    Task.create({ userId: 1, title: "Become a Pilot Cody", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." }),
+    Task.create({ userId: 1, title: "Become a Developer Cody", description: "finish stackathon, captone, and graduate", status: "in progress" }),
+    Task.create({ userId: 1, title: "Become a firefigher Cody", description: "Not possible but sure", status: "todo" })
+  ])
+
   console.log(`seeded ${users.length} users`)
   console.log(`seeded successfully`)
   return {
     users: {
       cody: users[0],
       murphy: users[1]
-    }
+    },
+    tasks: {
+      cody: tasks[0],
+      murphy: tasks[1]
+    },
   }
 }
 
