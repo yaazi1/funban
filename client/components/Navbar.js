@@ -1,21 +1,22 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import {Link} from 'react-router-dom'
-import {logout} from '../store'
+import { Link } from 'react-router-dom'
+import { logout } from '../store'
 
-const Navbar = () =>  {
+const Navbar = () => {
   const isLoggedIn = useSelector(state => !!state.auth.id)
   const dispatch = useDispatch()
 
   return (
     <div>
-      <h1>FS-App-Template</h1>
+      <h1>FunBan</h1>
       <nav>
         {isLoggedIn ? (
           <div>
             {/* The navbar will show these links after you log in */}
             <Link to="/home">Home</Link>
-            <a href="#" onClick={ () => dispatch(logout()) }>
+            <Link to="/board"> Board </Link>
+            <a href="#" onClick={() => dispatch(logout())}>
               Logout
             </a>
           </div>
@@ -29,7 +30,7 @@ const Navbar = () =>  {
       </nav>
       <hr />
     </div>
-    )
+  )
 }
 
 export default Navbar
